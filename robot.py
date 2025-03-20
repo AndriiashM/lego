@@ -135,13 +135,15 @@ class Robot:
                 pass
 
     def stay(self):
-        # vom letzten PID
+        self.distance_sensor.value0
 
         offset = 42
+        alfa = 0.025
+        one_minus_alfa = 1 - alfa
 
         Kc = 10
         Pc = 0.50
-        dT = 1 / 2000
+        dT = 1 / 80
 
         Kp = Kc * 0.6
         Ki = 2 * Kp / Pc * dT
@@ -155,19 +157,8 @@ class Robot:
         derivative = 0
         last_error = 0
 
-        time_target = time.perf_counter()
-
-        c = time.perf_counter() + 1
-
-        loop_counter = 0
+        time_target = time.perf_counter() + dT
         while True:
-            loop_counter += 1
-
-            if time.perf_counter() > c:
-                print(loop_counter)
-                loop_counter = 0
-                c += 1
-
             error = (int(self.distance_sensor.value0) - offset)
             integral += error
             derivative = error - last_error
@@ -181,6 +172,8 @@ class Robot:
             self.run(-speed, -speed)
 
             last_error = error
+
+            offset = alfa * last_error + one_minus_alfa * offset
 
             while time.perf_counter() < time_target:
                 pass
