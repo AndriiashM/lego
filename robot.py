@@ -100,8 +100,8 @@ class Robot:
         self.left_motor = Motor(output_left)
         self.right_motor = Motor(output_right)
 
-        self.left_motor.stop_action('break')
-        self.right_motor.stop_action('break')
+        self.left_motor.stop_action('brake')
+        self.right_motor.stop_action('brake')
 
         self.distance_sensor = DistanceSensor(input_distance)
 
