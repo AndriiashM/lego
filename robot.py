@@ -105,7 +105,7 @@ class Robot:
 
         self.distance_sensor = DistanceSensor(input_distance)
 
-        self.distance_sensor.mode('US-DIST-CM')
+        self.distance_sensor.mode('IR-PROX')
 
     def stop(self):
         self.left_motor.command = 'stop'
@@ -187,7 +187,9 @@ class Robot:
             time_target += dT
 
     def main(self):
-        self.stay()
+        while True:
+            print(self.distance_sensor.value0)
+            time.sleep(0.5)
 
 
 if __name__ == "__main__":
