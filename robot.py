@@ -140,7 +140,7 @@ class Robot:
         alfa = 0.001
         one_minus_alfa = 1 - alfa
 
-        Kc = 10
+        Kc = 100
         Pc = 0.50
         dT = 1 / 80
 
