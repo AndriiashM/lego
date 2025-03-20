@@ -44,7 +44,8 @@ class Device:
         return super().__getattribute__(name)
 
     def __getattr__(self, name):
-        return super().__setattr__(name, Device.funktion(self, name))
+        super().__setattr__(name, Device.funktion(self, name))
+        return super().__getattribute__(name)(super().__getattribute__('file_names').get(name))
 
     def __setattr__(self, name, value):
         if super().__getattribute__('file_names').get(name) is None:
