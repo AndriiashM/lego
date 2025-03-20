@@ -188,7 +188,42 @@ class Robot:
 
     def main(self):
         while True:
-            print(self.distance_sensor.value0, self.distance_sensor.value2, self.distance_sensor.value4, self.distance_sensor.value6)
+            try:
+                print('value0:', self.distance_sensor.value0)
+            except:
+                pass
+            try:
+                print('value1:', self.distance_sensor.value1)
+            except:
+                pass
+            try:
+                print('value2:', self.distance_sensor.value2)
+            except:
+                pass
+            try:
+                print('value3:', self.distance_sensor.value3)
+            except:
+                pass
+            try:
+                print('value4:', self.distance_sensor.value4)
+            except:
+                pass
+            try:
+                print('value5:', self.distance_sensor.value5)
+            except:
+                pass
+            try:
+                print('value6:', self.distance_sensor.value6)
+            except:
+                pass
+            try:
+                print('value7:', self.distance_sensor.value7)
+            except:
+                pass
+            try:
+                print('value8:', self.distance_sensor.value8)
+            except:
+                pass
             time.sleep(0.5)
 
 
