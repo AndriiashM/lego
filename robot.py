@@ -157,6 +157,7 @@ class Robot:
             value = int(self.distance_sensor.value0)
             print(value, offset)
             error = (value - offset)
+            integral *= 0.9949445
             integral += error
             derivative = error - last_error
 
