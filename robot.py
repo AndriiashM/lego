@@ -136,21 +136,17 @@ class Robot:
                 pass
 
     def stay(self):
-        offset = 48.14
+        offset = 46
         alfa = 0.001
         one_minus_alfa = 1 - alfa
 
         Kc = 500
-        Pc = 0.50
+        Pc = 0.30
         dT = 1 / 80
 
         Kp = Kc * 0.6
         Ki = 2 * Kp / Pc * dT
         Kd = Kp * Pc / (8 * dT)
-
-        Kp = Kc
-        Ki = 0
-        Kd = 0
 
         integral = 0
         derivative = 0
