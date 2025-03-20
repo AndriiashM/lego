@@ -23,14 +23,14 @@ class Device:
     @staticmethod
     def get_motor_by_port(port):
         for motor in os.listdir('/sys/class/tacho-motor/'):
-            with open(f"/sys/class/tacho-motor/{motor}/address") as f:
+            with open("/sys/class/tacho-motor/" + motor + "/address") as f:
                 if port.encode('ASCII') == f.read()[10:14]:
                     return motor
 
     @staticmethod
     def get_sensor_by_port(port):
         for sensor in os.listdir('/sys/class/lego-sensor/'):
-            with open(f"/sys/class/lego-sensor/{sensor}/address") as f:
+            with open("/sys/class/lego-sensor/" + sensor + "/address") as f:
                 if port.encode('ASCII') == f.read()[10:13]:
                     return sensor
 
@@ -71,7 +71,7 @@ class Device:
 
 class Motor(Device):
     def __init__(self, port):
-        super().__init__(f'/sys/class/tacho-motor/{Device.get_motor_by_port(port)}/')
+        super().__init__('/sys/class/tacho-motor/' + Device.get_motor_by_port(port) + "/")
 
     def running(self):
         return int(self.speed) == 0
@@ -85,7 +85,7 @@ class Motor(Device):
 
 class DistanceSensor(Device):
     def __init__(self, port):
-        super().__init__(f"/sys/class/lego-sensor/{Device.get_sensor_by_port(port)}/")
+        super().__init__("/sys/class/lego-sensor/" + Device.get_sensor_by_port(port) + "/")
 
     # doesn't be used often, so will be open and close at ones, delete it if you use it really oft
     def mode(self, mode):
