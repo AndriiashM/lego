@@ -24,14 +24,14 @@ class Device:
     def get_motor_by_port(port):
         for motor in os.listdir('/sys/class/tacho-motor/'):
             with open("/sys/class/tacho-motor/" + motor + "/address") as f:
-                if port.encode('ASCII') == f.read()[10:14]:
+                if port.encode('ASCII') == f.read()[10:14].encode('ASCII'):
                     return motor
 
     @staticmethod
     def get_sensor_by_port(port):
         for sensor in os.listdir('/sys/class/lego-sensor/'):
             with open("/sys/class/lego-sensor/" + sensor + "/address") as f:
-                if port.encode('ASCII') == f.read()[10:13]:
+                if port.encode('ASCII') == f.read()[10:13].encode('ASCII'):
                     return sensor
 
     def __init__(self, path):
