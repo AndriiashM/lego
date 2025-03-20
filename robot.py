@@ -137,7 +137,7 @@ class Robot:
     def stay(self):
         # vom letzten PID
 
-        offset = 100
+        offset = 42
 
         Kc = 10
         Pc = 0.50
@@ -168,7 +168,7 @@ class Robot:
                 loop_counter = 0
                 c += 1
 
-            error = (self.distance_sensor.value0 - offset)
+            error = (int(self.distance_sensor.value0) - offset)
             integral += error
             derivative = error - last_error
 
@@ -186,7 +186,7 @@ class Robot:
                 pass
             time_target += dT
 
-    def main(self):
+    def main1(self):
         while True:
             try:
                 print('value0:', self.distance_sensor.value0)
@@ -225,6 +225,9 @@ class Robot:
             except:
                 pass
             time.sleep(0.5)
+
+    def main(self):
+        self.stay()
 
 
 if __name__ == "__main__":
