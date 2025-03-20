@@ -136,10 +136,8 @@ class Robot:
                 pass
 
     def stay(self):
-        self.distance_sensor.value0
-
         offset = 42
-        alfa = 0.025
+        alfa = 0.001
         one_minus_alfa = 1 - alfa
 
         Kc = 10
@@ -172,6 +170,7 @@ class Robot:
             elif speed < 1050:
                 speed = -1050
 
+            print(speed)
             self.run(-speed, -speed)
 
             last_error = error
