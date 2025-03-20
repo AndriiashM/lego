@@ -159,8 +159,9 @@ class Robot:
 
         time_target = time.perf_counter() + dT
         while True:
-            print(int(self.distance_sensor.value0), offset)
-            error = (int(self.distance_sensor.value0) - offset)
+            value = int(self.distance_sensor.value0)
+            print(value, offset)
+            error = (value - offset)
             integral += error
             derivative = error - last_error
 
@@ -174,7 +175,7 @@ class Robot:
 
             last_error = error
 
-            offset = alfa * last_error + one_minus_alfa * offset
+            offset = alfa * value + one_minus_alfa * offset
 
             while time.perf_counter() < time_target:
                 pass
