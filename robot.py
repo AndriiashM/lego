@@ -222,13 +222,7 @@ class Robot:
             time.sleep(0.5)
 
     def main(self):
-        self.run()
-        time.sleep(2)
-        self.stop()
-        time.sleep(2)
-        self.run(-200, -200)
-        time.sleep(2)
-        self.drive(400, 400)
+        self.stay()
 
 
 if __name__ == "__main__":
