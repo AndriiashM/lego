@@ -136,11 +136,11 @@ class Robot:
                 pass
 
     def stay(self):
-        offset = 42
+        offset = 48.14
         alfa = 0.001
         one_minus_alfa = 1 - alfa
 
-        Kc = 100
+        Kc = 500
         Pc = 0.50
         dT = 1 / 80
 
