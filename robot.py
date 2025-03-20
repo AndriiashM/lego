@@ -167,7 +167,7 @@ class Robot:
             speed = Kp * error + Ki * integral + Kd * derivative
             if speed > 1050:
                 speed = 1050
-            elif speed < 1050:
+            elif speed < -1050:
                 speed = -1050
 
             print(speed)
