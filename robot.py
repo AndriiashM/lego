@@ -188,7 +188,7 @@ class Robot:
 
     def main(self):
         while True:
-            print(self.distance_sensor.value0)
+            print(self.distance_sensor.value0, self.distance_sensor.value1, self.distance_sensor.value2, self.distance_sensor.value3, self.distance_sensor.value4, self.distance_sensor.value5, self.distance_sensor.value6, self.distance_sensor.value7)
             time.sleep(0.5)
 
 
